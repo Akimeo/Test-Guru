@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Веб-приложение для создания и прохождения тестов.
+Проект создан в рамках курса "Основы Rails" онлайн-школы Thinknetica.
 
-Things you may want to cover:
+Список сущностей для проекта Test Guru:
 
-* Ruby version
+* Категория теста
 
-* System dependencies
+* Тест
 
-* Configuration
+* Вопросы теста
 
-* Database creation
+* Варианты ответов
 
-* Database initialization
+* Результат теста
 
-* How to run the test suite
+* Администратор
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Пользователь
