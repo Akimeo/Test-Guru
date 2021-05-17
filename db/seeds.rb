@@ -1,50 +1,42 @@
 # frozen_string_literal: true
 
-category_list = [
+categories = Category.create!([
   { title: 'Книги' },
   { title: 'Фильмы' },
   { title: 'Игры' },
   { title: 'Аниме' }
-]
-user_list = [
+])
+users = User.create!([
   { name: 'admin' },
-  { name: 'Аким' },
   { name: 'Сина' },
   { name: 'Роза' },
   { name: 'Мария' }
-]
-test_list = [
-  { title: 'Классическая литература', level: 3, category_id: 'Книги', author_id: 'Сина' },
-  { title: 'Современная литература', level: 2, category_id: 'Книги', author_id: 'Роза' },
-  { title: 'Викторина по фильму "Властелин Колец"', level: 1, category_id: 'Фильмы', author_id: 'Мария' },
-  { title: 'Вселенная "World of Warcraft"', level: 2, category_id: 'Игры', author_id: 'Мария' },
-  { title: 'История серии "The Legend of Zelda"', level: 2, category_id: 'Игры', author_id: 'Аким' }
-]
-question_list = [
-  { text: 'Вопрос 1', test_id: 'Викторина по фильму "Властелин Колец"' },
-  { text: 'Вопрос 2', test_id: 'Вселенная "World of Warcraft"' },
-  { text: 'Вопрос 3', test_id: 'История серии "The Legend of Zelda"' },
-  { text: 'Вопрос 4', test_id: 'История серии "The Legend of Zelda"' }
-]
-answer_list = [
-  { correct: true, text: 'Ответ 1', question_id: 'Вопрос 1' },
-  { correct: true, text: 'Ответ 2', question_id: 'Вопрос 2' },
-  { correct: false, text: 'Ответ 3', question_id: 'Вопрос 3' },
-  { correct: true, text: 'Ответ 4', question_id: 'Вопрос 4' }
-]
-
-categories = Category.create(category_list)
-users = User.create(user_list)
-test_list.each do |test|
-  test[:category_id] = categories.find { |category| category.title == test[:category_id] }.id
-  test[:author_id] = users.find { |user| user.name == test[:author_id] }.id
-end
-tests = Test.create(test_list)
-question_list.each do |question|
-  question[:test_id] = tests.find { |test| test.title == question[:test_id] }.id
-end
-questions = Question.create(question_list)
-answer_list.each do |answer|
-  answer[:question_id] = questions.find { |question| question.text == answer[:question_id] }.id
-end
-Answer.create(answer_list)
+])
+tests = Test.create!([
+  { title: 'Тест по книгам 1', category_id: categories[0].id, author_id: users[1].id },
+  { title: 'Тест по книгам 2', level: 1, category_id: categories[0].id, author_id: users[2].id },
+  { title: 'Тест по фильмам 1', level: 1, category_id: categories[1].id, author_id: users[2].id },
+  { title: 'Тест по играм 1', level: 2, category_id: categories[2].id, author_id: users[3].id },
+  { title: 'Тест по играм 2', level: 2, category_id: categories[2].id, author_id: users[3].id }
+])
+questions = Question.create!([
+  { text: 'Вопрос 1 к тесту по книгам 2', test_id: tests[1].id },
+  { text: 'Вопрос 1 к тесту по фильмам 1', test_id: tests[2].id },
+  { text: 'Вопрос 2 к тесту по фильмам 1', test_id: tests[2].id },
+  { text: 'Вопрос 1 к тесту по играм 1', test_id: tests[3].id },
+  { text: 'Вопрос 1 к тесту по играм 2', test_id: tests[4].id }
+])
+Answer.create!([
+  { correct: true, text: 'Ответ 1', question_id: questions[0].id },
+  { correct: true, text: 'Ответ 2', question_id: questions[1].id },
+  { text: 'Ответ 3', question_id: questions[2].id },
+  { text: 'Ответ 4', question_id: questions[3].id }
+])
+ViewedTest.create!([
+  { user_id: users[0].id, test_id: tests[0].id },
+  { user_id: users[0].id, test_id: tests[1].id },
+  { user_id: users[0].id, test_id: tests[2].id },
+  { user_id: users[0].id, test_id: tests[3].id },
+  { user_id: users[0].id, test_id: tests[4].id },
+  { user_id: users[1].id, test_id: tests[0].id }
+])
