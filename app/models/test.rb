@@ -12,7 +12,7 @@ class Test < ApplicationRecord
     Test
       .joins(:category)
       .where('categories.title = ?', category)
-      .order('tests.title DESC')
+      .order(title: :desc)
       .pluck(:title)
   end
 end
