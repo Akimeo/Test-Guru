@@ -1,0 +1,25 @@
+ru:
+  activerecord:
+    models:
+      answer: "Ответ"
+      category: "Категория"
+      question: "Вопрос"
+      test: "Тест"
+      user: "Пользователь"
+
+    attributes:
+      answer:
+        correct: "Правильность"
+      category:
+        title: "Название"
+      question:
+        text: "Текст"
+      test:
+        title: "Название"
+        level: "Уровень"
+      user:
+        name: "Имя"
+
+    errors:
+      messages:
+        too_many_answers: "не может иметь больше 4 ответов"
