@@ -10,13 +10,17 @@ ru:
     attributes:
       answer:
         correct: "Правильность"
+        question: "Вопрос"
       category:
         title: "Название"
       question:
         text: "Текст"
+        test: "Тест"
       test:
         title: "Название"
         level: "Уровень"
+        author: "Автор"
+        category: "Категория"
       user:
         name: "Имя"
 
