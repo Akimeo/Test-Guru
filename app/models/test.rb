@@ -10,11 +10,9 @@ class Test < ApplicationRecord
 
   scope :easy, -> { where(level: 0..1) }
   scope :normal, -> { where(level: 2..4) }
-  scope :hard, -> { where(level: 5..Float::INFINITY) }
+  scope :hard, -> { where(level: 5..) }
   scope :by_level, -> (level) { where('level = ?', level) }
-  scope :by_category, -> (category) { joins(:category).
-                                      where('categories.title = ?', category).
-                                      order(title: :desc) }
+  scope :by_category, -> (category) { joins(:category).where('categories.title = ?', category) }
 
   validates :title, presence: true,
                     uniqueness: { scope: :level }
@@ -23,6 +21,6 @@ class Test < ApplicationRecord
                                     greater_than_or_equal_to: 0 }
 
   def self.sort_by_category(category)
-    Test.by_category(category).pluck(:title)
+    by_category(category).order(title: :desc).pluck(:title)
   end
 end
