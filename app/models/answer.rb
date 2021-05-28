@@ -11,6 +11,6 @@ class Answer < ApplicationRecord
   private
 
   def validate_number_of_answers
-    errors.add(:question, :too_many_answers) if question.answers.count >= 4
+    errors.add(:question, :too_many_answers) if question.present? && question.answers.count >= 4
   end
 end
