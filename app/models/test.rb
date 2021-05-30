@@ -8,11 +8,19 @@ class Test < ApplicationRecord
   has_many :viewed_tests, dependent: :destroy
   has_many :users, through: :viewed_tests
 
+  scope :easy, -> { where(level: 0..1) }
+  scope :normal, -> { where(level: 2..4) }
+  scope :hard, -> { where(level: 5..) }
+  scope :by_level, -> (level) { where('level = ?', level) }
+  scope :by_category, -> (category) { joins(:category).where('categories.title = ?', category) }
+
+  validates :title, presence: true,
+                    uniqueness: { scope: :level }
+  validates :level, presence: true,
+                    numericality: { only_integer: true,
+                                    greater_than_or_equal_to: 0 }
+
   def self.sort_by_category(category)
-    Test
-      .joins(:category)
-      .where('categories.title = ?', category)
-      .order(title: :desc)
-      .pluck(:title)
+    by_category(category).order(title: :desc).pluck(:title)
   end
 end
