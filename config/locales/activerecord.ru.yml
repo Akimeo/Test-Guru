@@ -20,7 +20,9 @@ ru:
         title: "Название"
         level: "Уровень"
         author: "Автор"
+        author_id: "Автор"
         category: "Категория"
+        category_id: "Категория"
       user:
         name: "Имя"
 
