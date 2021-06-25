@@ -9,6 +9,7 @@ ru:
 
     attributes:
       answer:
+        text: "Текст"
         correct: "Правильность"
         question: "Вопрос"
       category:

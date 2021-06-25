@@ -1,0 +1,19 @@
+<h1>The <%= @viewed_test.test.title %> Test was Completed!</h1>
+
+<% if @viewed_test.passed? %>
+  <p>
+    <b>
+      You passed the test successfully!<br>
+      <span class="green_color"><%= @viewed_test.correct_answers_percent %></span> % of answers were correct
+    </b>
+  </p>
+<% else %>
+  <p>
+    <b>
+      You haven't passed the test ;(<br>
+      <span class="red_color"><%= @viewed_test.correct_answers_percent %></span> % of answers were correct
+    </b>
+  </p>
+<% end %>
+
+<%= link_to 'Back to tests', tests_path %>

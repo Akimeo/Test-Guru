@@ -1,0 +1,2 @@
+module ViewedTestsHelper
+end
