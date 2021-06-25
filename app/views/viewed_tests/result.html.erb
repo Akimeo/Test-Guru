@@ -4,14 +4,14 @@
   <p>
     <b>
       You passed the test successfully!<br>
-      <span style="color:green"><%= @viewed_test.correct_answers_percent %></span> % of answers were correct
+      <span class="green_color"><%= @viewed_test.correct_answers_percent %></span> % of answers were correct
     </b>
   </p>
 <% else %>
   <p>
     <b>
       You haven't passed the test ;(<br>
-      <span style="color:red"><%= @viewed_test.correct_answers_percent %></span> % of answers were correct
+      <span class="red_color"><%= @viewed_test.correct_answers_percent %></span> % of answers were correct
     </b>
   </p>
 <% end %>

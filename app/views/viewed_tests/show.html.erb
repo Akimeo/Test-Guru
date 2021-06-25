@@ -2,7 +2,7 @@
 
 <p>
   <b>
-    <%= "#{current_question_number(@viewed_test)} of #{@viewed_test.test.questions.count}" %>
+    <%= "#{@viewed_test.current_question_number} of #{@viewed_test.test.questions.count}" %>
   </b>
 </p>
 

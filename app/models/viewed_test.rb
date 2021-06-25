@@ -7,6 +7,8 @@ class ViewedTest < ApplicationRecord
 
   before_validation :before_validation_set_question
 
+  SUCCESS_RATIO = 85
+
   def completed?
     current_question.nil?
   end
@@ -17,12 +19,16 @@ class ViewedTest < ApplicationRecord
     save!
   end
 
+  def current_question_number
+    test.questions.order(:id).where('id <= ?', current_question).count
+  end
+
   def correct_answers_percent
     (correct_questions.to_f / test.questions.count * 100).to_i
   end
 
   def passed?
-    correct_answers_percent >= 85
+    correct_answers_percent >= SUCCESS_RATIO
   end
 
   private
@@ -35,9 +41,8 @@ class ViewedTest < ApplicationRecord
                             end
   end
 
-  def correct_answer?(answer_ids)
-    answer_ids ||= []
-    correct_answers.ids.sort == answer_ids.map(&:to_i).sort
+  def correct_answer?(answer_ids=[])
+    correct_answers.ids.sort == answer_ids&.map(&:to_i)&.sort
   end
 
   def correct_answers
