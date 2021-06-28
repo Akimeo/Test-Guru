@@ -19,6 +19,6 @@ class SessionsController < ApplicationController
   def destroy
     session.delete(:user_id)
     cookies.delete(:path)
-    redirect_to login_path, alert: 'Guru has left us'
+    redirect_to login_path, notice: 'Guru has left us'
   end
 end
