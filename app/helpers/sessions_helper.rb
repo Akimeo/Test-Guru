@@ -1,5 +1,7 @@
 module SessionsHelper
-  def flash_message
-    flash.map { |type, msg| content_tag :p, msg, class: "flash #{type}" }.join.html_safe
+  def flash_message(type)
+    if flash[type]
+      content_tag :p, flash[type], class: "flash #{type}"
+    end
   end
 end
