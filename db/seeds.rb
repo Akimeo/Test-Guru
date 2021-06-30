@@ -7,10 +7,10 @@ categories = Category.create!([
   { title: 'Аниме' }
 ])
 users = User.create!([
-  { name: 'admin' },
-  { name: 'Сина' },
-  { name: 'Роза' },
-  { name: 'Мария' }
+  { name: 'admin', email: 'admin@email.com', password: 'admin' },
+  { name: 'Сина', email: 'aot1@paradis.isle', password: 'password' },
+  { name: 'Роза', email: 'aot2@paradis.isle', password: 'qwerty' },
+  { name: 'Мария', email: 'aot3@paradis.isle', password: '123456' }
 ])
 tests = Test.create!([
   { title: 'Тест по книгам 1', category: categories[0], author: users[1] },
