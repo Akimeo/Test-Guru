@@ -1,15 +1,20 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :trackable,
+         :validatable,
+         :confirmable
+
   has_many :viewed_tests, dependent: :destroy
   has_many :tests, through: :viewed_tests
   has_many :created_tests, class_name: 'Test', foreign_key: :author_id, dependent: :destroy
 
-  validates :name, presence: true
   validates :email, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-
-  has_secure_password
 
   def tests_by_level(level)
     tests.by_level(level)

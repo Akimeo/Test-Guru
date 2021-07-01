@@ -6,18 +6,28 @@ categories = Category.create!([
   { title: 'Игры' },
   { title: 'Аниме' }
 ])
-users = User.create!([
-  { name: 'admin', email: 'admin@email.com', password: 'admin' },
-  { name: 'Сина', email: 'aot1@paradis.isle', password: 'password' },
-  { name: 'Роза', email: 'aot2@paradis.isle', password: 'qwerty' },
-  { name: 'Мария', email: 'aot3@paradis.isle', password: '123456' }
-])
+admin = Admin.new(
+  email: 'admin@mail.com',
+  password: 'password',
+  first_name: 'Akim',
+  last_name: 'Parinov'
+)
+admin.skip_confirmation!
+admin.save!
+user = User.new(
+  email: 'user@mail.com',
+  password: 'password',
+  first_name: 'Nefir',
+  last_name: 'Hasenuf'
+)
+user.skip_confirmation!
+user.save!
 tests = Test.create!([
-  { title: 'Тест по книгам 1', category: categories[0], author: users[1] },
-  { title: 'Тест по книгам 2', level: 1, category: categories[0], author: users[2] },
-  { title: 'Тест по фильмам 1', level: 1, category: categories[1], author: users[2] },
-  { title: 'Тест по играм 1', level: 2, category: categories[2], author: users[3] },
-  { title: 'Тест по играм 2', level: 2, category: categories[2], author: users[3] }
+  { title: 'Тест по книгам 1', category: categories[0], author: admin },
+  { title: 'Тест по книгам 2', level: 1, category: categories[0], author: admin },
+  { title: 'Тест по фильмам 1', level: 1, category: categories[1], author: admin },
+  { title: 'Тест по играм 1', level: 2, category: categories[2], author: admin },
+  { title: 'Тест по играм 2', level: 2, category: categories[2], author: admin }
 ])
 questions = Question.create!([
   { text: 'Вопрос 1 к тесту по книгам 2', test: tests[1] },
@@ -33,10 +43,9 @@ Answer.create!([
   { text: 'Ответ 4', question: questions[3] }
 ])
 ViewedTest.create!([
-  { user: users[0], test: tests[0] },
-  { user: users[0], test: tests[1] },
-  { user: users[0], test: tests[2] },
-  { user: users[0], test: tests[3] },
-  { user: users[0], test: tests[4] },
-  { user: users[1], test: tests[0] }
+  { user: user, test: tests[0] },
+  { user: user, test: tests[1] },
+  { user: user, test: tests[2] },
+  { user: user, test: tests[3] },
+  { user: user, test: tests[4] }
 ])

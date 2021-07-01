@@ -11,6 +11,7 @@ class ViewedTestsController < ApplicationController
     @viewed_test.accept!(params[:answer_ids])
 
     if @viewed_test.completed?
+      TestsMailer.completed_test(@viewed_test).deliver_now
       redirect_to result_viewed_test_path(@viewed_test)
     else
       render :show
