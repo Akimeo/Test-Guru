@@ -1,14 +1,12 @@
 <h1>Passing the <%= @viewed_test.test.title %> Test</h1>
 
 <p>
-  <b>
-    <%= "#{@viewed_test.current_question_number} of #{@viewed_test.test.questions.count}" %>
-  </b>
+  <b><%= "#{@viewed_test.current_question_number} of #{@viewed_test.test.questions.count}" %></b>
 </p>
 
-<b>
-  <%= @viewed_test.current_question.text %>
-</b>
+<p>
+  <b><%= @viewed_test.current_question.text %></b>
+</p>
 
 <%= form_with url: viewed_test_path(@viewed_test), local: true, method: :put do |form| %>
   <%= form.collection_check_boxes :answer_ids, @viewed_test.current_question.answers, :id,
@@ -19,5 +17,6 @@
     </p>
   <% end %>
 
+  <p><%= link_to 'Gist Question', gist_viewed_test_path(@viewed_test), method: :post %></p>
   <p><%= form.submit 'Next' %></p>
 <% end %>

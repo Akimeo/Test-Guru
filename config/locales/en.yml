@@ -31,3 +31,12 @@
 
 en:
   hello: "Hello world"
+
+  viewed_tests:
+    gist:
+      success: "was successfully created!"
+      faillure: "An error occurred while saving gist"
+
+  services:
+    gist_question_service:
+      description: "A question about %{title} from TestGuru"

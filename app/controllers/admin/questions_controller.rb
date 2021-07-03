@@ -32,6 +32,7 @@ class Admin::QuestionsController < Admin::BaseController
   end
 
   def destroy
+    byebug
     @question.destroy
     redirect_to admin_test_path(@question.test)
   end
