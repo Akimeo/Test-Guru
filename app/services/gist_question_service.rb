@@ -1,4 +1,14 @@
+# frozen_string_literal: true
+
 class GistQuestionService
+  GistQuestionService::Responce = Struct.new(:status, :url) do
+    SUCCESS_CODE = 201
+
+    def success?
+      status == SUCCESS_CODE
+    end
+  end
+
   def initialize(question, client: nil)
     @question = question
     @test = question.test
@@ -6,11 +16,8 @@ class GistQuestionService
   end
 
   def call
-    @client.create_gist(gist_params)
-  end
-
-  def success?
-    @client.last_response&.status == 201 ? true : false
+    responce = @client.create_gist(gist_params)
+    GistQuestionService::Responce.new(@client.last_response&.status, responce.html_url)
   end
 
   private
@@ -27,8 +34,6 @@ class GistQuestionService
   end
 
   def gist_content
-    content = [@question.text]
-    content += @question.answers.pluck(:text)
-    content.join("\n")
+    [@question.text, *@question.answers.pluck(:text)].join("\n")
   end
 end

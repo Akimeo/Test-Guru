@@ -32,8 +32,8 @@
 en:
   hello: "Hello world"
 
-  viewed_tests:
-    gist:
+  gists:
+    create:
       success: "was successfully created!"
       faillure: "An error occurred while saving gist"
 

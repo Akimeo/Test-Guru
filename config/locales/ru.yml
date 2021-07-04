@@ -1,8 +1,8 @@
 ru:
   hello: "Привет, мир"
 
-  viewed_tests:
-    gist:
+  gists:
+    create:
       success: "успешно сохранен!"
       faillure: "Во время сохранения gist произошла ошибка"
 

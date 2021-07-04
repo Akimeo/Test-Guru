@@ -31,8 +31,6 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise', '~> 4.0'
 
-gem 'faraday'
-
 gem 'octokit', '~> 4.0'
 
 group :development, :test do
