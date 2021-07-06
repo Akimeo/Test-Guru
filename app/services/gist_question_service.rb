@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class GistQuestionService
-  GistQuestionService::Responce = Struct.new(:status, :url) do
+  Responce = Struct.new(:status, :url) do
     SUCCESS_CODE = 201
 
     def success?
@@ -17,7 +17,7 @@ class GistQuestionService
 
   def call
     responce = @client.create_gist(gist_params)
-    GistQuestionService::Responce.new(@client.last_response&.status, responce.html_url)
+    Responce.new(@client.last_response&.status, responce.html_url)
   end
 
   private
