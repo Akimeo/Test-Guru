@@ -1,26 +1,27 @@
 class PasswordChecker {
-  static checkPassword() {
+  static checkPassword(passwordFieldId, confirmationFieldId) {
     document.addEventListener('turbolinks:load', function() {
-      const password = document.querySelector('.password')
-      const confirm = document.querySelector('.password-confirmation')
+      const password = document.getElementById(passwordFieldId)
+      const confirmation = document.getElementById(confirmationFieldId)
 
-      if (password && confirm) {
-        password.addEventListener('input', PasswordChecker.comparePasswords)
-        confirm.addEventListener('input', PasswordChecker.comparePasswords)
+      if (password && confirmation) {
+        password.addEventListener('input', function() {
+          PasswordChecker.comparePasswords(password, confirmation)
+        })
+        confirmation.addEventListener('input', function() {
+          PasswordChecker.comparePasswords(password, confirmation)
+        })
       }
     })
   }
 
-  static comparePasswords() {
-    const password = document.querySelector('.password').value
-    const confirm = document.querySelector('.password-confirmation').value
-
-    switch(confirm) {
+  static comparePasswords(password, confirmation) {
+    switch(confirmation.value) {
       case '':
         document.querySelector('.octicon-check-circle-fill').classList.add('hide')
         document.querySelector('.octicon-x-circle-fill').classList.add('hide')
         break
-      case password:
+      case password.value:
         document.querySelector('.octicon-check-circle-fill').classList.remove('hide')
         document.querySelector('.octicon-x-circle-fill').classList.add('hide')
         break
