@@ -7,6 +7,16 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import TableSorter from "utilities/table_sorter"
+import PasswordChecker from "utilities/password_checker"
+
+document.addEventListener('turbolinks:load', function() {
+  TableSorter.sortTable("admin_tests", "category")
+  TableSorter.sortTable("admin_tests", "title")
+  TableSorter.sortTable("user_tests", "category")
+  TableSorter.sortTable("user_tests", "title")
+  PasswordChecker.checkPassword("new_password", "new_password_confirmation")
+})
 
 Rails.start()
 Turbolinks.start()
