@@ -1,19 +1,17 @@
 class TableSorter {
   static sortTable(tableId, headerId) {
-    document.addEventListener('turbolinks:load', function() {
-      const table = document.getElementById(tableId)
+    const table = document.getElementById(tableId)
 
-      if (table) {
-        const header = table.rows[0].cells.namedItem(headerId)
+    if (table) {
+      const header = table.rows[0].cells.namedItem(headerId)
 
-        if (header) {
-          header.classList.add('pointer')
-          header.addEventListener('click', function() {
-            TableSorter.sortRows(table, header)
-          })
-        }
+      if (header) {
+        header.classList.add('pointer')
+        header.addEventListener('click', function() {
+          TableSorter.sortRows(table, header)
+        })
       }
-    })
+    }
   }
 
   static sortRows(table, header) {

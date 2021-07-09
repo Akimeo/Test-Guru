@@ -1,18 +1,16 @@
 class PasswordChecker {
   static checkPassword(passwordFieldId, confirmationFieldId) {
-    document.addEventListener('turbolinks:load', function() {
-      const password = document.getElementById(passwordFieldId)
-      const confirmation = document.getElementById(confirmationFieldId)
+    const password = document.getElementById(passwordFieldId)
+    const confirmation = document.getElementById(confirmationFieldId)
 
-      if (password && confirmation) {
-        password.addEventListener('input', function() {
-          PasswordChecker.comparePasswords(password, confirmation)
-        })
-        confirmation.addEventListener('input', function() {
-          PasswordChecker.comparePasswords(password, confirmation)
-        })
-      }
-    })
+    if (password && confirmation) {
+      password.addEventListener('input', function() {
+        PasswordChecker.comparePasswords(password, confirmation)
+      })
+      confirmation.addEventListener('input', function() {
+        PasswordChecker.comparePasswords(password, confirmation)
+      })
+    }
   }
 
   static comparePasswords(password, confirmation) {
