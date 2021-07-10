@@ -9,6 +9,9 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import TableSorter from "utilities/table_sorter"
 import PasswordChecker from "utilities/password_checker"
+import FormInline from "utilities/form_inline"
+import ProgressBar from "utilities/progress_bar"
+
 
 document.addEventListener('turbolinks:load', function() {
   TableSorter.sortTable("admin_tests", "category")
@@ -16,6 +19,11 @@ document.addEventListener('turbolinks:load', function() {
   TableSorter.sortTable("user_tests", "category")
   TableSorter.sortTable("user_tests", "title")
   PasswordChecker.checkPassword("new_password", "new_password_confirmation")
+  FormInline.doStuff()
+
+  const progressBar = new ProgressBar("test_progress_bar")
+
+  progressBar.trackProgress()
 })
 
 Rails.start()

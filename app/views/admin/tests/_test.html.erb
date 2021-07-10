@@ -1,10 +1,18 @@
 <tr>
   <td><%= test.category.title %></td>
-  <td><%= test.title %></td>
+  <td>
+    <%= content_tag :span, test.title, class: 'test-title', data: { test_id: test.id } %>
+    <%= render 'form_inline', test: test == @test ? @test : test %>
+  </td>
   <td><%= test_level(test) %></td>
   <td align="center"><%= test.questions.count %></td>
   <td><%= link_to 'Show', admin_test_path(test) %></td>
-  <td><%= link_to 'Edit', edit_admin_test_path(test) %></td>
+  <td>
+    <%= link_to 'Edit',
+                edit_admin_test_path(test),
+                class: 'form-inline-link',
+                data: { test_id: test.id } %>
+  </td>
   <td>
     <%= link_to 'Delete',
                   admin_test_path(test),

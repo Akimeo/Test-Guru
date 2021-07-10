@@ -31,6 +31,10 @@ class ViewedTest < ApplicationRecord
     correct_answers_percent >= SUCCESS_RATIO
   end
 
+  def progress_percent
+    ((current_question_number - 1).to_f / test.questions.count * 100).to_i
+  end
+
   private
 
   def before_validation_set_question
