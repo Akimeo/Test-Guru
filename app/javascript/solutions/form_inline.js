@@ -1,5 +1,5 @@
 class FormInline {
-  static doStuff() {
+  static setEventListeners() {
     const links = document.querySelectorAll('.form-inline-link')
 
     if (links.length) {
