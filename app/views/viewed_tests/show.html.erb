@@ -1,5 +1,11 @@
 <h1>Passing the <%= @viewed_test.test.title %> Test</h1>
 
+<div class="progress">
+  <%= content_tag :div, id: 'test_progress_bar', class: 'progress-bar', data: { progress: @viewed_test.progress_percent } do %>
+    <%= @viewed_test.progress_percent %>%
+  <% end %>
+</div>
+
 <p>
   <b><%= "#{@viewed_test.current_question_number} of #{@viewed_test.test.questions.count}" %></b>
 </p>
