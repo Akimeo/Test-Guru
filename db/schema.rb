@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_07_14_123536) do
     t.string "image_name", null: false
     t.string "rule", null: false
     t.string "value"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

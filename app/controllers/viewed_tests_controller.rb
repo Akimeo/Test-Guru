@@ -11,7 +11,7 @@ class ViewedTestsController < ApplicationController
     @viewed_test.accept!(params[:answer_ids])
 
     if @viewed_test.completed?
-      check_badges
+      give_badges
       TestsMailer.completed_test(@viewed_test).deliver_now
       redirect_to result_viewed_test_path(@viewed_test)
     else
@@ -25,8 +25,8 @@ class ViewedTestsController < ApplicationController
     @viewed_test = ViewedTest.find(params[:id])
   end
 
-  def check_badges
-    badges = Badge.give_badges(@viewed_test)
+  def give_badges
+    badges = BadgeService.new(@viewed_test).call
 
     unless badges.blank?
       current_user.badges.push(badges)

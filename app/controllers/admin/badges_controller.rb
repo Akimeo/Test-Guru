@@ -42,8 +42,7 @@ class Admin::BadgesController < Admin::BaseController
   end
 
   def badge_params
-    params[:badge][:value] = Badge.find_value(params[:badge])
-    params.require(:badge).permit(:title, :image_name, :rule, :value)
+    params.require(:badge).permit(:title, :image_name, :rule, :value, :description)
   end
 
 end

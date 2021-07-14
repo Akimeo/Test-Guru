@@ -13,22 +13,18 @@
 
   <p>
     <%= form.label :rule %><br>
-    <%= form.select :rule, Badge::RULES, prompt: true %>
+    <%= form.text_field :rule %>
   </p>
 
-  <div id="category_value" class="hide">
-    <p>
-      <%= form.label :category_id %>
-      <%= form.collection_select :category_id, Category.all, :id, :title %>
-    </p>
-  </div>
+  <p>
+    <%= form.label :value %><br>
+    <%= form.text_field :value %>
+  </p>
 
-  <div id="level_value" class="hide">
-    <p>
-      <%= form.label :level %>
-      <%= form.select :level, Test::LEVELS %>
-    </p>
-  </div>
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description, rows: 7, cols: 60 %>
+  </p>
 
   <p><%= form.submit %></p>
 <% end %>
