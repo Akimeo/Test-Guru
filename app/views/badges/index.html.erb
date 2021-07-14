@@ -1,0 +1,13 @@
+<h1>My Badges</h1>
+
+<h3>Полученные награды</h3>
+
+<table>
+  <%= render current_user.badges %>
+</table>
+
+<h3>Доступные награды</h3>
+
+<table>
+  <%= render @badges %>
+</table>

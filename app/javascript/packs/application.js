@@ -11,10 +11,12 @@ import TableSorter from "utilities/table_sorter"
 import PasswordChecker from "utilities/password_checker"
 import FormInline from "solutions/form_inline"
 import ProgressBar from "utilities/progress_bar"
+import BadgeFormHandler from "solutions/badge_form_handler"
 
 
 document.addEventListener('turbolinks:load', function() {
   FormInline.setEventListeners()
+  BadgeFormHandler.handleForm()
 
   TableSorter.sortTable("admin_tests", "category")
   TableSorter.sortTable("admin_tests", "title")

@@ -4,7 +4,7 @@
   <strong>Category:</strong>
   <%= @test.category.title %><br>
   <strong>Level:</strong>
-  <%= test_level(@test) %>
+  <%= Test.difficulty(@test.level) %>
 </p>
 
 <div>
