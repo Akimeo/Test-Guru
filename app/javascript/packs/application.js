@@ -11,6 +11,7 @@ import TableSorter from "utilities/table_sorter"
 import PasswordChecker from "utilities/password_checker"
 import FormInline from "solutions/form_inline"
 import ProgressBar from "utilities/progress_bar"
+import Timer from "utilities/timer"
 
 
 document.addEventListener('turbolinks:load', function() {
@@ -23,8 +24,10 @@ document.addEventListener('turbolinks:load', function() {
   PasswordChecker.checkPassword("new_password", "new_password_confirmation")
 
   const progressBar = new ProgressBar("test_progress_bar")
+  const timer = new Timer("test_timer")
 
   progressBar.trackProgress()
+  timer.start()
 })
 
 Rails.start()

@@ -6,6 +6,10 @@
   <% end %>
 </div>
 
+<%= content_tag :div, id: 'test_timer', class: 'timer', data: { duration: @viewed_test.test.duration } do %>
+  Text
+<% end %>
+
 <p>
   <b><%= "#{@viewed_test.current_question_number} of #{@viewed_test.test.questions.count}" %></b>
 </p>
