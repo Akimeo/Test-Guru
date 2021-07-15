@@ -10,7 +10,7 @@ class ViewedTest < ApplicationRecord
   SUCCESS_RATIO = 85
 
   def completed?
-    current_question.nil?
+    current_question.nil? || time_is_over?
   end
 
   def accept!(answer_ids)
