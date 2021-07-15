@@ -8,10 +8,10 @@ class ViewedTest < ApplicationRecord
   before_validation :before_validation_set_question
   before_save :before_save_set_complete_attribute
 
-  scope :complete_only, -> { where('complete = TRUE') }
-  scope :by_category_id, -> (category_id) { joins(:test).where('tests.category_id = ?', category_id) }
-  scope :by_level, -> (level) { joins(:test).where('tests.level = ?', level) }
-  scope :unique, -> { select(:test_id).distinct }
+  scope :complete, -> { where(complete: true) }
+  scope :by_category_id, -> (category_id) { joins(:test).where(tests: { category_id: category_id }) }
+  scope :by_level, -> (level) { joins(:test).where(tests: { level: level }) }
+  scope :no_repetitions, -> { select(:test_id).distinct }
 
 
   SUCCESS_RATIO = 85

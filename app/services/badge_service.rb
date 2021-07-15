@@ -7,17 +7,16 @@ class BadgeService
   end
 
   def call
-    Badge.all.each do |badge|
+    Badge.select do |badge|
       send "#{badge.rule}_conditions", badge
     end
-    @badges
   end
 
   private
 
   def first_attempt_conditions(badge)
     @badges.push(badge) if @viewed_test.complete &&
-                           @user.tests.where('tests.id = ?', @test.id).count == 1
+                           @user.tests.where(tests: { id: @test.id }).count == 1
     end
 
   def absolute_result_conditions(badge)
@@ -27,12 +26,12 @@ class BadgeService
   def category_all_conditions(badge)
     @badges.push(badge) if @user.has_not_one?(badge) &&
                            Test.all.by_category_id(badge.value).count ==
-                           @user.viewed_tests.by_category_id(badge.value).complete_only.unique.count
+                           @user.viewed_tests.by_category_id(badge.value).complete.no_repetitions.count
   end
 
   def level_all_conditions(badge)
     @badges.push(badge) if @user.has_not_one?(badge) &&
                            Test.all.by_level(badge.value).count ==
-                           @user.viewed_tests.by_level(badge.value).complete_only.unique.count
+                           @user.viewed_tests.by_level(badge.value).complete.no_repetitions.count
   end
 end

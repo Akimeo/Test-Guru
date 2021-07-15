@@ -28,14 +28,10 @@ class ViewedTestsController < ApplicationController
   def give_badges
     badges = BadgeService.new(@viewed_test).call
 
-    unless badges.blank?
+    if badges.any?
       current_user.badges.push(badges)
 
-      if badges.count > 1
-        flash[:notice] = "Вы получили награды!"
-      else
-        flash[:notice] = "Вы получили награду!"
-      end
+      flash[:notice] = 'Вы получили награды: ' + badges.map(&:title).join(', ')
     end
   end
 end
