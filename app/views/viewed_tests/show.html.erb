@@ -1,14 +1,13 @@
 <h1>Passing the <%= @viewed_test.test.title %> Test</h1>
 
+<%= content_tag :div, id: 'test_timer', class: 'timer', data: { remaining_time: @viewed_test.remaining_time } do %>
+<% end %>
+
 <div class="progress">
   <%= content_tag :div, id: 'test_progress_bar', class: 'progress-bar', data: { progress: @viewed_test.progress_percent } do %>
     <%= @viewed_test.progress_percent %>%
   <% end %>
 </div>
-
-<%= content_tag :div, id: 'test_timer', class: 'timer', data: { duration: @viewed_test.test.duration } do %>
-  Text
-<% end %>
 
 <p>
   <b><%= "#{@viewed_test.current_question_number} of #{@viewed_test.test.questions.count}" %></b>
@@ -18,7 +17,7 @@
   <b><%= @viewed_test.current_question.text %></b>
 </p>
 
-<%= form_with url: viewed_test_path(@viewed_test), local: true, method: :put do |form| %>
+<%= form_with url: viewed_test_path(@viewed_test), local: true, method: :put, id: 'test_form' do |form| %>
   <%= form.collection_check_boxes :answer_ids, @viewed_test.current_question.answers, :id,
   :text, include_hidden: false do |b| %>
     <p>

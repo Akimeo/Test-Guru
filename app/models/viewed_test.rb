@@ -35,6 +35,18 @@ class ViewedTest < ApplicationRecord
     ((current_question_number - 1).to_f / test.questions.count * 100).to_i
   end
 
+  def finish_time
+    created_at + test.duration.seconds
+  end
+
+  def remaining_time
+    (finish_time - Time.current).to_i
+  end
+
+  def time_is_over?
+    Time.current > finish_time
+  end
+
   private
 
   def before_validation_set_question

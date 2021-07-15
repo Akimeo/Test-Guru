@@ -24,7 +24,7 @@ document.addEventListener('turbolinks:load', function() {
   PasswordChecker.checkPassword("new_password", "new_password_confirmation")
 
   const progressBar = new ProgressBar("test_progress_bar")
-  const timer = new Timer("test_timer")
+  const timer = new Timer("test_timer", "test_form")
 
   progressBar.trackProgress()
   timer.start()

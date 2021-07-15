@@ -2,6 +2,7 @@ class ViewedTestsController < ApplicationController
   before_action :find_viewed_test, only: %i[show result update]
 
   def show
+    redirect_to result_viewed_test_path(@viewed_test) if @viewed_test.completed?
   end
 
   def result
