@@ -13,12 +13,12 @@
 
   <p>
     <%= form.label :rule %><br>
-    <%= form.text_field :rule %>
+    <%= form.select :rule, Badge.rules.keys, prompt: true %>
   </p>
 
   <p>
-    <%= form.label :value %><br>
-    <%= form.text_field :value %>
+    <%= form.label :rule_value %><br>
+    <%= form.text_field :rule_value %>
   </p>
 
   <p>

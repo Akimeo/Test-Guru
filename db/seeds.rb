@@ -53,12 +53,12 @@ Answer.create!([
 ])
 
 Badge.create!([
-  { title: 'Первопроходец', image_name: 'award.png', rule: 'first_attempt',
+  { title: 'Первопроходец', image_name: 'award.png', rule: 0,
     description: 'Награда за прохождение теста с первой попытки' },
-  { title: 'Full Combo', image_name: 'medal.png', rule: 'absolute_result',
+  { title: 'Full Combo', image_name: 'medal.png', rule: 1,
     description: 'Награда за прохождение теста на 100%' },
-  { title: 'Bad Comedian', image_name: 'cup.png', rule: 'category_all', value: '2',
+  { title: 'Bad Comedian', image_name: 'cup.png', rule: 2, rule_value: '2',
     description: 'Награда за прохождение всех тестов категории Фильмы' },
-  { title: 'Easy Peasy', image_name: 'nice.png', rule: 'level_all', value: '0',
+  { title: 'Easy Peasy', image_name: 'nice.png', rule: 3, rule_value: '0',
     description: 'Награда за прохождение всех тестов уровня easy' }
 ])
